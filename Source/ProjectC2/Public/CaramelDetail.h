@@ -3,9 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-
-#include "Editor/PropertyEditor/Public/IDetailCustomization.h"
-//#include "Editor/DetailCustomizations/Private/DetailCustomizationsPrivatePCH.h"
+#include "IDetailCustomization.h"
 
 //DECLARE_DELEGATE(FShowTeamProperties);
 
