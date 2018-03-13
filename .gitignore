@@ -8,4 +8,5 @@ Content/KiteDemo/
 Intermediate/
 Saved/
 .vs/
-Binaries/Win64/failed.hotreload
+*.hotreload
+Binaries/Win64/UE4Editor-ProjectC2-*.*
