@@ -7,4 +7,5 @@ Content/Katanami/
 Content/KiteDemo/
 Intermediate/
 Saved/
-ProjectC2.sln
+.vs/
+Binaries/Win64/failed.hotreload
