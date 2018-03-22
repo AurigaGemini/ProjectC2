@@ -6,7 +6,7 @@
 #include "IDetailCustomization.h"
 #include "IPropertyTypeCustomization.h"
 
-class CaramelDetail : public IDetailCustomization, public IPropertyTypeCustomization
+class CaramelBoxDetail : public IDetailCustomization, public IPropertyTypeCustomization
 {
 public:
 

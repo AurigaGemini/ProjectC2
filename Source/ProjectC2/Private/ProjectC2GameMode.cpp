@@ -2,7 +2,7 @@
 
 #include "ProjectC2GameMode.h"
 #include "PropertyEditorModule.h"
-#include "CaramelDetail.h"
+#include "CaramelBoxDetail.h"
 
 AProjectC2GameMode::AProjectC2GameMode()
 {
@@ -10,7 +10,7 @@ AProjectC2GameMode::AProjectC2GameMode()
 
 	//詳細パネルのカスタマイジング
 	FPropertyEditorModule& p = FModuleManager::LoadModuleChecked<FPropertyEditorModule>("PropertyEditor");
-	p.RegisterCustomClassLayout("CaramelBox_C", FOnGetDetailCustomizationInstance::CreateStatic(&CaramelDetail::MakeInstance));
+	p.RegisterCustomClassLayout("CaramelBox_C", FOnGetDetailCustomizationInstance::CreateStatic(&CaramelBoxDetail::MakeInstance));
 //	p.RegisterCustomClassLayout("MyActor", FOnGetDetailCustomizationInstance::CreateStatic(&CaramelDetail::MakeInstance));
 
 
