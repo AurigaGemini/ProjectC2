@@ -6,9 +6,10 @@
 #include "Internationalization.h"
 #include "DetailWidgetRow.h"
 #include "STextBlock.h"
+#include "SEditableTextBox.h"
 #include "SlateFontInfo.h"
 
-#define LOCTEXT_NAMESPACE "CaramelBoxDetails"
+#define LOCTEXT_NAMESPACE "CARAMEL_BOX_DETAILS"
 
 TSharedRef<IDetailCustomization> CaramelBoxDetail::MakeInstance()
 {
@@ -17,7 +18,7 @@ TSharedRef<IDetailCustomization> CaramelBoxDetail::MakeInstance()
 
 void CaramelBoxDetail::CustomizeDetails(IDetailLayoutBuilder& layout)
 {
-	UE_LOG(LogTemp, Warning, TEXT("[[%s: CaramelDetail::CustomizeDetails() was called]]"), __FUNCTIONW__);
+//	UE_LOG(LogTemp, Warning, TEXT("[[%s: CaramelDetail::CustomizeDetails() was called]]"), __FUNCTIONW__);
 
 	layout.HideCategory("Rendering");
 	layout.HideCategory("Input");
@@ -26,16 +27,37 @@ void CaramelBoxDetail::CustomizeDetails(IDetailLayoutBuilder& layout)
 	layout.HideCategory("Tick");
 	layout.HideCategory("Replication");
 
-//	IDetailCategoryBuilder& c = layout.EditCategory("Transform", FText::GetEmpty(), ECategoryPriority::Important);
-
-	IDetailCategoryBuilder& c = layout.EditCategory("Size", FText::FromString(FString("Extra info")), ECategoryPriority::Important);
-	c.AddCustomRow(LOCTEXT("Extra info", "Width"))
+	IDetailCategoryBuilder& c = layout.EditCategory("BOX_SIZE", FText::FromString("Box Size"), ECategoryPriority::Important);
+	c.AddCustomRow(LOCTEXT("BOX_SIZE_WIDTH", "Width"))
 		.NameContent()
 		[
 			SNew(STextBlock)
-			.Text(LOCTEXT("Extra info", "Width"))
-		.Font(IDetailLayoutBuilder::GetDetailFont())
-		];
+			.Text(LOCTEXT("BOX_SIZE_WIDTH", "Width"))
+//			.Font(IDetailLayoutBuilder::GetDetailFont())
+		]
+		.ValueContent()
+		.MinDesiredWidth(50)
+		[
+			SNew(SEditableTextBox)
+			.Text(FText::FromString("1"))
+//			.Font(IDetailLayoutBuilder::GetDetailFont())
+		]
+	;
+	c.AddCustomRow(LOCTEXT("BOX_SIZE_HEIGHT", "Height"))
+		.NameContent()
+		[
+			SNew(STextBlock)
+			.Text(LOCTEXT("BOX_SIZE_HEIGHT", "Height"))
+//			.Font(IDetailLayoutBuilder::GetDetailFont())
+		]
+		.ValueContent()
+		.MinDesiredWidth(50)
+		[
+			SNew(SEditableTextBox)
+			.Text(FText::FromString("1"))
+//			.Font(IDetailLayoutBuilder::GetDetailFont())
+		]
+		;
 
 /*
 	IDetailCategoryBuilder& c = layout.EditCategory("Size", FText::FromString(FString("Extra info")), ECategoryPriority::Important);
