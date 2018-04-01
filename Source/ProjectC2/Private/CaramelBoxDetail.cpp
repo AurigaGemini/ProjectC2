@@ -1,7 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "CaramelBoxDetail.h"
-#include "SlateInputWidgets.h"
 
 #define LOCTEXT_NAMESPACE "CARAMEL_BOX_DETAILS"
 
@@ -21,52 +20,63 @@ void CaramelBoxDetail::CustomizeDetails(IDetailLayoutBuilder& layout)
 	layout.HideCategory("Tick");
 	layout.HideCategory("Replication");
 
-	IDetailCategoryBuilder& c = layout.EditCategory("BOX_SIZE", FText::FromString("Box Size"), ECategoryPriority::Important);
-	c.AddCustomRow(LOCTEXT("BUTTON", "SButton"))
-		.NameContent()
-		[
-			SNew(STextBlock)
-			.Text(LOCTEXT("BUTTON", "SButton"))
-//			.Font(IDetailLayoutBuilder::GetDetailFont())
-		]
-		.ValueContent()
-		.MinDesiredWidth(50)
-		[
-			SNew(SButton)
-//			.Text(FText::FromString("1"))
-//			.Font(IDetailLayoutBuilder::GetDetailFont())
-		]
-	;
-	c.AddCustomRow(LOCTEXT("CHECK_BOX", "SCheckBox"))
-		.NameContent()
-		[
-			SNew(STextBlock)
-			.Text(LOCTEXT("CHECK_BOX", "SCheckBox"))
-//			.Font(IDetailLayoutBuilder::GetDetailFont())
-		]
-		.ValueContent()
-		.MinDesiredWidth(50)
-		[
-			SNew(SCheckBox)
-//			.Text(FText::FromString("1"))
-//			.Font(IDetailLayoutBuilder::GetDetailFont())
-		]
-	;
-	c.AddCustomRow(LOCTEXT("COMBO_BOX", "SComboBox"))
-		.NameContent()
-		[
-			SNew(STextBlock)
-			.Text(LOCTEXT("COMBO_BOX", "SComboBox"))
-//			.Font(IDetailLayoutBuilder::GetDetailFont())
-		]
-		.ValueContent()
-		.MinDesiredWidth(50)
-		[
-			SNew(SComboBox)
-//			.Text(FText::FromString("1"))
-//			.Font(IDetailLayoutBuilder::GetDetailFont())
-		]
-	;
+	IDetailCategoryBuilder& c = layout.EditCategory("CATEGORY_CAPTION", FText::FromString("Slate Input Widgets"), ECategoryPriority::Important);
+	{
+/*
+		c.AddCustomRow(LOCTEXT("BUTTON", "SButton"))
+			.NameContent()
+			[
+				SNew(STextBlock)
+				.Text(LOCTEXT("BUTTON", "SButton"))
+			//			.Font(IDetailLayoutBuilder::GetDetailFont())
+			]
+			.ValueContent()
+			.MinDesiredWidth(50)
+			[
+				SNew(SButton)
+				.Text(FText::FromString("TEST"))
+			//			.Font(IDetailLayoutBuilder::GetDetailFont())
+			]
+		;
+*/
+	}
+	{
+		TSharedRef<TAttribute<ECheckBoxState>> checkbox_attr = MakeShareable(new TAttribute<ECheckBoxState>(ECheckBoxState::Checked));
+		c.AddCustomRow(LOCTEXT("CHECK_BOX", "SCheckBox"))
+			.NameContent()
+			[
+				SNew(STextBlock)
+				.Text(LOCTEXT("CHECK_BOX", "SCheckBox"))
+			//			.Font(IDetailLayoutBuilder::GetDetailFont())
+			]
+			.ValueContent()
+			.MinDesiredWidth(50)
+			[
+				SNew(SCheckBox)
+				.IsChecked(*checkbox_attr)
+			//			.Text(FText::FromString("1"))
+			//			.Font(IDetailLayoutBuilder::GetDetailFont())
+			]
+		;
+	}
+/*
+	{
+		c.AddCustomRow(LOCTEXT("COMBO_BOX", "SComboBox"))
+			.NameContent()
+			[
+				SNew(STextBlock)
+				.Text(LOCTEXT("COMBO_BOX", "SComboBox"))
+//				.Font(IDetailLayoutBuilder::GetDetailFont())
+			]
+			.ValueContent()
+			.MinDesiredWidth(100)
+			[
+				SNew(MyComboBox)
+			]
+		;
+	}
+*/
+/*
 	c.AddCustomRow(LOCTEXT("COMBO_BUTTON", "SComboButton"))
 		.NameContent()
 		[
@@ -442,7 +452,7 @@ void CaramelBoxDetail::CustomizeDetails(IDetailLayoutBuilder& layout)
 //			.Font(IDetailLayoutBuilder::GetDetailFont())
 		]
 	;
-
+*/
 
 /*
 	IDetailCategoryBuilder& c = layout.EditCategory("Size", FText::FromString(FString("Extra info")), ECategoryPriority::Important);
@@ -477,12 +487,12 @@ TSharedRef<IPropertyHandle>      StructPropertyHandle,
 class FDetailWidgetRow&          HeaderRow,
 IPropertyTypeCustomizationUtils& StructCustomizationUtils
 
-// ƒvƒƒpƒeƒBƒnƒ“ƒhƒ‹Žæ“¾
+// ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒãƒ³ãƒ‰ãƒ«å–å¾—
 TypeHandle = StructPropertyHandle->GetChildHandle(GET_MEMBER_NAME_CHECKED(FTestStruct, Type));
 SelectMeshHandle = StructPropertyHandle->GetChildHandle(GET_MEMBER_NAME_CHECKED(FTestStruct, SelectMesh));
 DefaultScaleHandle = StructPropertyHandle->GetChildHandle(GET_MEMBER_NAME_CHECKED(FTestStruct, DefaultScale));
 
-// ƒnƒ“ƒhƒ‹‚É’¼ÚƒR[ƒ‹ƒoƒbƒN‚ðŽw’è‚·‚éê‡
+// ãƒãƒ³ãƒ‰ãƒ«ã«ç›´æŽ¥ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ã‚’æŒ‡å®šã™ã‚‹å ´åˆ
 if (SelectMeshHandle.IsValid()) {
 	SelectMeshHandle->SetOnPropertyValueChanged(FSimpleDelegate::CreateSP(this, &FTestStructCustomization::OnChangedMesh)
 );
@@ -494,5 +504,12 @@ void CaramelBoxDetail::CustomizeChildren(TSharedRef<class IPropertyHandle> handl
 {
 	//Create further customization here
 }
+
+/*
+TSharedRef<SWidget> CaramelBoxDetail::CreateComboBoxOptions(FComboItemType options)
+{
+	return SNew(STextBlock).Text(FText::FromString(*options));
+}
+*/
 
 #undef LOCTEXT_NAMESPACE

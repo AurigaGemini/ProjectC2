@@ -8,7 +8,7 @@ AProjectC2GameMode::AProjectC2GameMode()
 {
 //	UE_LOG(LogTemp, Warning, TEXT("[[%s: AProjectC2GameMode was called]]"), __FUNCTIONW__);
 
-	//詳細パネルのカスタマイジング
+	//隧ｳ邏ｰ繝代ロ繝ｫ縺ｮ繧ｫ繧ｹ繧ｿ繝槭う繧ｸ繝ｳ繧ｰ
 	FPropertyEditorModule& p = FModuleManager::LoadModuleChecked<FPropertyEditorModule>("PropertyEditor");
 	p.RegisterCustomClassLayout("CaramelBox_C", FOnGetDetailCustomizationInstance::CreateStatic(&CaramelBoxDetail::MakeInstance));
 //	p.RegisterCustomClassLayout("MyActor", FOnGetDetailCustomizationInstance::CreateStatic(&CaramelDetail::MakeInstance));

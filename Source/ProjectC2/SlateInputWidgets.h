@@ -12,7 +12,6 @@
 #include "SButton.h"
 #include "SCheckBox.h"
 #include "SComboButton.h"
-#include "SComboRow.h"
 #include "SEditableLabel.h"
 #include "SEditableText.h"
 #include "SEditableTextBox.h"
